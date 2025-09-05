@@ -18,11 +18,17 @@ app.add_middleware(
 
 # Initialize Firebase Admin
 import os
+import json
 if os.path.exists("serviceAccountKey.json"):
     cred = credentials.Certificate("serviceAccountKey.json")
     firebase_admin.initialize_app(cred)
+elif os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"):
+    # Use environment variable for production
+    cred_dict = json.loads(os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"))
+    cred = credentials.Certificate(cred_dict)
+    firebase_admin.initialize_app(cred)
 else:
-    # Use default credentials or environment variable
+    # Use default credentials
     firebase_admin.initialize_app()
 
 # In-memory storage (replace with database)
