@@ -1,0 +1,18 @@
+# Dependencies
+frontend/node_modules/
+backend/__pycache__/
+backend/venv/
+
+# Firebase credentials
+backend/serviceAccountKey.json
+
+# Build files
+frontend/build/
+
+# Environment files
+.env
+.env.local
+
+# OS files
+.DS_Store
+*.log
