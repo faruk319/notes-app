@@ -104,14 +104,18 @@ const Notes = ({ user }) => {
       </div>
 
       <div>
-        {notes.map(note => (
-          <div key={note.id} style={{ border: '1px solid #ccc', padding: '15px', margin: '10px 0' }}>
-            <h3>{note.title}</h3>
-            <p>{note.content}</p>
-            <button onClick={() => editNote(note)} style={{ marginRight: '10px' }}>Edit</button>
-            <button onClick={() => deleteNote(note.id)}>Delete</button>
-          </div>
-        ))}
+        {Array.isArray(notes) && notes.length > 0 ? (
+          notes.map(note => (
+            <div key={note.id} style={{ border: '1px solid #ccc', padding: '15px', margin: '10px 0' }}>
+              <h3>{note.title}</h3>
+              <p>{note.content}</p>
+              <button onClick={() => editNote(note)} style={{ marginRight: '10px' }}>Edit</button>
+              <button onClick={() => deleteNote(note.id)}>Delete</button>
+            </div>
+          ))
+        ) : (
+          <p>No notes yet. Create your first note!</p>
+        )}
       </div>
     </div>
   );
