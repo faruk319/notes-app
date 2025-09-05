@@ -8,7 +8,7 @@ const Notes = ({ user }) => {
   const [content, setContent] = useState('');
   const [editingId, setEditingId] = useState(null);
 
-  const API_URL = 'http://localhost:8000';
+  const API_URL = 'https://notes-app-backend-onh3.onrender.com';
 
   useEffect(() => {
     fetchNotes();
